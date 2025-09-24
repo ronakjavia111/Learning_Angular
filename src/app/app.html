@@ -7,6 +7,74 @@
 <h3>num1: {{ num1 }}</h3>
 <h3>num2: {{ num2 }}</h3>
 <br />
-<h2>String Comparison [with case]: {{ str1== str2 }}</h2>
+<h2>String Comparison [with case]: {{ str1 == str2 }}</h2>
 <h2>String Comparison [without case]: {{ str1.toUpperCase() == str2.toUpperCase() }}</h2>
 <h2>Number Comparison: {{ num1 == num2 }}</h2>
+
+<h4>{{ alph }}</h4>
+<h4>{{ random }}</h4>
+
+<h3 (click)="dataType()">
+  <button>Alph</button>
+</h3>
+
+<div
+  style="
+    border: 5px solid springgreen;
+    padding: 25px;
+    margin: 5px;
+    background-color: blanchedalmond;
+    width: fit-content;
+  "
+>
+  <button (click)="counter('dec')">Decrement</button>
+  <h3>WithSignal: {{ withSignal() }}</h3>
+  <h3>WithoutSignal: {{ withoutSignal }}</h3>
+  <button (click)="counter('inc')">Increment</button>
+</div>
+
+<div
+  style="
+    border: 5px solid rgb(0, 195, 255);
+    padding: 25px;
+    margin: 5px;
+    background-color: rgb(218, 176, 114);
+    width: fit-content;
+  "
+>
+  <h3>{{ demo() }}</h3>
+  <h3>{{ country() }}</h3>
+  <h3>{{ state() }}</h3>
+  <h3>{{ city() }}</h3>
+  <button (click)="updateSignal()">Update Country</button>
+</div>
+
+<div
+  style="
+    border: 5px solid rgb(238, 255, 0);
+    padding: 25px;
+    margin: 5px;
+    background-color: rgb(218, 176, 114);
+    width: fit-content;
+  "
+>
+  <h2>{{ userName() }}</h2>
+  <button (click)="userName.set('RJ')">Update UserName</button>
+</div>
+
+<div
+  style="
+    border: 5px solid rgb(255, 0, 0);
+    padding: 25px;
+    margin: 5px;
+    background-color: rgb(218, 176, 114);
+    width: fit-content;
+  "
+>
+  <h2>{{ count() }}</h2>
+  <button (click)="count.set(count() + 1)">Update Count</button>
+
+  @if(displayHeader) {
+  <h3 style="background-color: aqua; padding: 10px; width: fit-content">Header</h3>
+  }
+</div>

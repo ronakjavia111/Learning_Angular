@@ -1,10 +1,9 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, computed, effect, Signal, signal, WritableSignal } from '@angular/core';
 import { Test } from './test/test';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Test],
+  imports: [Test],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -18,4 +17,72 @@ export class App {
 
   str1 = 'Angular';
   str2 = 'angular';
+
+  alph: string = '12';
+  random: string | number = 'ronak';
+
+  dataType() {
+    const alph = 15;
+    console.log('Alph: ', alph);
+
+    this.random = 100;
+    console.log('Random: ', this.random);
+  }
+
+  withoutSignal = 10;
+  withSignal = signal(10);
+
+  counter(value: string) {
+    if (value.toLowerCase() == 'dec') {
+      this.withSignal.set(this.withSignal() - 1);
+      this.withoutSignal - 1;
+    } else if (value.toLowerCase() == 'inc') {
+      this.withSignal.set(this.withSignal() + 1);
+      this.withoutSignal + 1;
+    }
+
+    console.log(this.withSignal());
+    console.log(this.withoutSignal);
+  }
+
+  demo = signal<number>(10);
+  country = signal<String | Number>('Russia');
+
+  // Writeable Signal
+  state: WritableSignal<string> = signal('Russian State');
+
+  // Computed Signal
+  // city = computed(() => this.country() + ' - ' + this.state());
+  city: Signal<string> = computed(() => this.country() + ' - ' + this.state());
+
+  updateSignal() {
+    this.demo.update((val) => val + 1);
+    this.country.set('India');
+    this.state.set('Goa');
+    // this.city.set('Ahmedabad'); Read-Only - Can't Update Computed Signal
+  }
+
+  // Effect Signal
+  userName = signal('Ronak');
+  count = signal(0);
+  displayHeader = false;
+
+  effect() {
+    console.log(this.userName);
+  }
+
+  constructor() {
+    effect(() => {
+      console.log(this.userName);
+
+      if (this.count() == 2) {
+        this.displayHeader = true;
+        setTimeout(() => {
+          this.displayHeader = false;
+        }, 2000);
+      } else {
+        this.displayHeader = false;
+      }
+    });
+  }
 }
