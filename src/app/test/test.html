@@ -1,18 +1,79 @@
 <p>test works!</p>
 
 <button (click)="handleClick()">Click Me</button>
-<br>
-<br>
+<br />
+<br />
 
 <button name="Click Btn" (click)="eventHandler($event)">Click Me</button>
-<br>
-<br>
+<br />
+<br />
 
-<input type="text" placeholder="Enter text here..." (focus)="eventHandler($event)" (input)="eventHandler($event)">
-<br>
-<br>
+<input
+  type="text"
+  placeholder="Enter text here..."
+  (focus)="eventHandler($event)"
+  (input)="eventHandler($event)"
+/>
+<br />
+<br />
 
-<div style="background-color: aqua; width: 25px; height: 25px;" (mouseenter)="eventHandler($event)"></div>
-<br>
+<div
+  style="background-color: aqua; width: 25px; height: 25px"
+  (mouseenter)="eventHandler($event)"
+></div>
+<br />
 
-<div style="background-color: brown; height: 25px; width: 25px;" (mouseleave)="eventHandler($event)"></div>
+<div
+  style="background-color: brown; height: 25px; width: 25px"
+  (mouseleave)="eventHandler($event)"
+></div>
+
+<!-- For Loop -->
+<div style="margin-top: 15px; margin-bottom: 15px">
+  <h3>Topic: For Loop</h3>
+
+  @for (item of items; track item) {
+  <span style="margin-right: 2px">{{ item }}</span>
+  }
+</div>
+
+<!-- ngIf, ngFor, ngSwitch and ngSwitchCase [deprecated] -->
+
+<div style="margin-top: 15px; margin-bottom: 15px">
+  <h3>Topic: For *ng directives</h3>
+
+  <h4 *ngIf="check">Header</h4>
+
+  <span *ngFor="let user of users" style="margin-right: 5px">{{ user }}</span>
+
+  <div style="margin: 20px; border: 5px solid gold; width: fit-content; padding: 10px">
+    <button (click)="changeUser('Abc')">Abc</button>
+    <button (click)="changeUser('Def')">Def</button>
+    <button (click)="changeUser('Ghi')">Ghi</button>
+
+    <div [ngSwitch]="user">
+      <h3 *ngSwitchCase="'Abc'">User: Abc</h3>
+      <h3 *ngSwitchCase="'Def'">User: Def</h3>
+      <h3 *ngSwitchCase="'Ghi'">User: Ghi</h3>
+    </div>
+  </div>
+
+  <div style="margin: 20px; border: 5px solid sienna; width: fit-content; padding: 10px">
+    <label for="cars">Choose a car:</label>
+
+    <select name="cars" [(ngModel)]="car">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
+
+    <div [ngSwitch]="car">
+      <h3 *ngSwitchCase="'volvo'">Volvo</h3>
+      <h3 *ngSwitchCase="'saab'">Saab</h3>
+      <h3 *ngSwitchCase="'mercedes'">Mercedes</h3>
+      <h3 *ngSwitchCase="'audi'">Audi</h3>
+      <h3 *ngSwitchDefault>No Car Selected</h3>
+    </div>
+  </div>
+</div>

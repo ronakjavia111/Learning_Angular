@@ -67,10 +67,6 @@ export class App {
   count = signal(0);
   displayHeader = false;
 
-  effect() {
-    console.log(this.userName);
-  }
-
   constructor() {
     effect(() => {
       console.log(this.userName);
@@ -84,5 +80,17 @@ export class App {
         this.displayHeader = false;
       }
     });
+  }
+
+  // If | Else and Switch
+  display = false;
+  color = 'black';
+
+  toggle() {
+    this.display = !this.display;
+  }
+
+  handleEvent(event: Event) {
+    this.color = (event.target as HTMLInputElement).value;
   }
 }
