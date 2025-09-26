@@ -55,4 +55,11 @@ export class Test {
   changeUser(val: string) {
     this.user = val;
   }
+
+  // Get Set value
+  userName: string = '';
+
+  setUserName(val:string) {
+    this.userName = val;
+  }
 }

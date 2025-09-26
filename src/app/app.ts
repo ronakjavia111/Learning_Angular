@@ -18,7 +18,6 @@ export class App {
   str1 = 'Angular';
   str2 = 'angular';
 
-  alph: string = '12';
   random: string | number = 'ronak';
 
   dataType() {
@@ -46,17 +45,20 @@ export class App {
   }
 
   demo = signal<number>(10);
-  country = signal<String | Number>('Russia');
+  country = signal<String | Number>('Australia');
 
   // Writeable Signal
-  state: WritableSignal<string> = signal('Russian State');
+  state: WritableSignal<string> = signal('Sydney');
 
   // Computed Signal
   // city = computed(() => this.country() + ' - ' + this.state());
-  city: Signal<string> = computed(() => this.country() + ' - ' + this.state());
+  countryState: Signal<string> = computed(() => this.country() + ' - ' + this.state());
 
-  updateSignal() {
+  updateCount() {
     this.demo.update((val) => val + 1);
+  }
+  
+  updateSignal() {
     this.country.set('India');
     this.state.set('Goa');
     // this.city.set('Ahmedabad'); Read-Only - Can't Update Computed Signal
