@@ -1,9 +1,10 @@
 import { Component, computed, effect, Signal, signal, WritableSignal } from '@angular/core';
 import { Test } from './test/test';
+import { Todolist } from './todolist/todolist';
 
 @Component({
   selector: 'app-root',
-  imports: [Test],
+  imports: [Test, Todolist],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -57,7 +58,7 @@ export class App {
   updateCount() {
     this.demo.update((val) => val + 1);
   }
-  
+
   updateSignal() {
     this.country.set('India');
     this.state.set('Goa');

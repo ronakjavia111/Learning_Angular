@@ -59,7 +59,7 @@ export class Test {
   // Get Set value
   userName: string = '';
 
-  setUserName(val:string) {
+  setUserName(val: string) {
     this.userName = val;
   }
 }

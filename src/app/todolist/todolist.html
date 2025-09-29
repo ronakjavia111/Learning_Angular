@@ -1,0 +1,56 @@
+<div
+  style="
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 5px solid rgb(220, 83, 20);
+    width: fit-content;
+  "
+>
+  <h2
+    style="
+      text-decoration: underline;
+    "
+  >
+    Todo List
+  </h2>
+  <hr />
+  <div style="display: flex; justify-content: space-between">
+    <input
+      type="text"
+      name="TodoSearch"
+      placeholder="Enter your Todo"
+      style="
+        border: 1px solid black;
+        padding: 2px 0px 2px 10px;
+        border-radius: 5px;
+        margin-right: 5px;
+      "
+      [(ngModel)]="todo"
+    />
+    <button class="btn btn-info" style="color: white; font-weight: 500" (click)="addTodo(todo)">
+      Add Todo
+    </button>
+  </div>
+
+  <h4 style="margin: 20px 0px; color: gold; text-shadow: 1px 1px 3px black;">{{ todo }}</h4>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr style="text-align: center">
+        <th>Index</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (todo of todoList; track todo.id) {
+      <tr>
+        <td>{{ todo.id }}</td>
+        <td>{{ todo.name }}</td>
+        <td><button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button></td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
