@@ -9,7 +9,8 @@
 >
   <h2 style="text-decoration: underline">Life Cycle of Component</h2>
   <hr />
-  <h3>Name: {{ name }}</h3>
+  <ng-content></ng-content>
+  <h3 #myPara>Name: {{ name }}</h3>
   <h3>Counter: {{ countNumber }}</h3>
 
   <div style="margin: 20px 0px">

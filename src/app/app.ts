@@ -31,11 +31,11 @@ export class App {
 
   constructor() {
     afterNextRender(() => {
-      console.log('AfterNextRender Called: ', this.LifeCycle.countNumber);
+      // console.log('AfterNextRender Called: ', this.LifeCycle.countNumber);
     });
 
     afterEveryRender(() => {
-      console.log('AfterEveryRender Called: ', this.LifeCycle.countNumber);
+      // console.log('AfterEveryRender Called: ', this.countNumber);
     });
   }
 

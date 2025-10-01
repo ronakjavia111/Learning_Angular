@@ -8,7 +8,9 @@
   </button>
 
   @if(countNumber!=3){
-  <app-lifecycle [countNumber]="countNumber" #lifecycle></app-lifecycle>
+  <app-lifecycle [countNumber]="countNumber" #lifecycle>
+    <h2 style="margin: 10px; color: orange" #projectedParagraph>ngAfterContentInit()</h2>
+  </app-lifecycle>
   }
 
   <div style="width: fit-content; padding: 20px; border: 5px solid mediumaquamarine">
