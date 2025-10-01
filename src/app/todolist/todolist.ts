@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-todolist',
@@ -18,5 +19,13 @@ export class Todolist {
 
   deleteTodo(id: number) {
     this.todoList = this.todoList.filter((item) => item.id != id);
+  }
+
+  name: string | null = '';
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.name = this.route.snapshot.params['name'];
   }
 }

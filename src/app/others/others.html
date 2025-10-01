@@ -1,0 +1,121 @@
+<main style="display: flex; justify-content: space-between; align-items: flex-start">
+  <div style="border: 5px solid gray; padding: 20px; width: max-content; margin: 10px 0px">
+    <h2 style="text-decoration: underline">Event Handling</h2>
+
+    <hr style="border: 1px solid black; opacity: 1" />
+
+    <button class="btn btn-secondary" style="margin-right: 10px" (click)="handleClick()">
+      Click Me [Pop-Up]
+    </button>
+    <button
+      class="btn btn-warning"
+      style="margin-right: 10px"
+      name="Click Btn"
+      (click)="eventHandler($event)"
+    >
+      Click Me [Console]
+    </button>
+
+    <input
+      type="text"
+      placeholder="Enter text here..."
+      (focus)="eventHandler($event)"
+      (input)="eventHandler($event)"
+    />
+
+    <hr style="border: 1px solid black; opacity: 1" />
+
+    <span
+      style="background-color: aqua; padding: 10px 20px; margin-right: 10px"
+      (mouseenter)="eventHandler($event)"
+    ></span>
+
+    <span
+      style="background-color: brown; padding: 10px 20px"
+      (mouseleave)="eventHandler($event)"
+    ></span>
+  </div>
+
+  <!-- For Loop -->
+  <div
+    style="border: 5px solid rgb(255, 210, 96); padding: 20px; width: max-content; margin: 10px 0px"
+  >
+    <h2 style="text-decoration: underline">For Loop</h2>
+
+    @for (item of items; track item) {
+    <span style="margin-right: 2px">{{ item }}</span>
+    }
+  </div>
+
+  <!-- ngIf, ngFor, ngSwitch and ngSwitchCase [deprecated] -->
+  <div
+    style="
+      border: 5px solid rgb(96, 218, 255);
+      padding: 20px;
+      width: max-content;
+      margin-top: 10px 0px;
+    "
+  >
+    <h3 style="text-decoration: underline">For *ng directives</h3>
+
+    <h4 *ngIf="check">Header</h4>
+
+    <span *ngFor="let user of users" style="margin-right: 5px">{{ user }}</span>
+
+    <div style="margin: 20px; border: 5px solid gold; width: fit-content; padding: 10px">
+      <button (click)="changeUser('Abc')">Abc</button>
+      <button (click)="changeUser('Def')">Def</button>
+      <button (click)="changeUser('Ghi')">Ghi</button>
+
+      <div [ngSwitch]="user">
+        <h3 *ngSwitchCase="'Abc'">User: Abc</h3>
+        <h3 *ngSwitchCase="'Def'">User: Def</h3>
+        <h3 *ngSwitchCase="'Ghi'">User: Ghi</h3>
+      </div>
+    </div>
+
+    <div style="margin: 20px; border: 5px solid sienna; width: fit-content; padding: 10px">
+      <label for="cars">Choose a car:</label>
+
+      <select name="cars" [(ngModel)]="car">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+
+      <div [ngSwitch]="car">
+        <h3 *ngSwitchCase="'volvo'">Volvo</h3>
+        <h3 *ngSwitchCase="'saab'">Saab</h3>
+        <h3 *ngSwitchCase="'mercedes'">Mercedes</h3>
+        <h3 *ngSwitchCase="'audi'">Audi</h3>
+        <h3 *ngSwitchDefault>No Car Selected</h3>
+      </div>
+    </div>
+  </div>
+
+  <div
+    style="
+      margin-top: 15px;
+      margin-bottom: 15px;
+      padding: 15px;
+      border: 5px solid crimson;
+      width: fit-content;
+    "
+  >
+    <h2 style="text-decoration: underline">Get Set value</h2>
+
+    <h3>{{ userName }}</h3>
+    <div class="form-control">
+      <input
+        type="text"
+        #getSetUser
+        style="border: 2px solid black; margin-right: 5px; border-radius: 3px"
+        placeholder="Enter your Name..."
+      />
+      <button class="btn btn-secondary" (click)="setUserName(getSetUser.value)">
+        Set your Name
+      </button>
+    </div>
+  </div>
+</main>

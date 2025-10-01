@@ -3,12 +3,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-test',
+  selector: 'app-others',
   imports: [NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, FormsModule],
-  templateUrl: './test.html',
-  styleUrl: './test.css',
+  templateUrl: './others.html',
+  styleUrl: './others.css',
 })
-export class Test {
+export class Others {
   handleClick() {
     alert('Hello, User.');
 

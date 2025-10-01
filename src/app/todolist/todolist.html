@@ -7,13 +7,7 @@
     width: fit-content;
   "
 >
-  <h2
-    style="
-      text-decoration: underline;
-    "
-  >
-    Todo List
-  </h2>
+  <h2 style="text-decoration: underline">Todo List</h2>
   <hr />
   <div style="display: flex; justify-content: space-between">
     <input
@@ -33,7 +27,7 @@
     </button>
   </div>
 
-  <h4 style="margin: 20px 0px; color: gold; text-shadow: 1px 1px 3px black;">{{ todo }}</h4>
+  <h4 style="margin: 20px 0px; color: gold; text-shadow: 1px 1px 3px black">{{ todo }}</h4>
 
   <table class="table table-bordered table-striped">
     <thead>
@@ -46,11 +40,19 @@
     <tbody>
       @for (todo of todoList; track todo.id) {
       <tr>
-        <td>{{ todo.id }}</td>
-        <td>{{ todo.name }}</td>
-        <td><button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button></td>
+        <td style="align-items: baseline">{{ todo.id }}</td>
+        <td style="align-items: baseline">
+          <span>{{ todo.name }}</span>
+        </td>
+        <td style="align-items: center">
+          <button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
+        </td>
       </tr>
       }
     </tbody>
   </table>
+
+  <div>
+    <h4>{{ name }}</h4>
+  </div>
 </div>
