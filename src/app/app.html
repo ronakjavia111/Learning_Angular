@@ -13,20 +13,74 @@
   </app-lifecycle>
   }
 
-  <div style="width: fit-content; padding: 20px; border: 5px solid mediumaquamarine">
-    <h4 style="text-decoration: underline">User List</h4>
-    <ul style="list-style-type: none">
-      @for (user of users; track user.id) {
-      <li>
-        {{ user.id }}:
-        <a
-          [routerLink]="[{ outlets: { userDetails: ['users', user.id, user.name] } }]"
-          style="text-decoration: none; color: black; font-weight: 700"
-          >{{ user.name }}</a
+  <div style="display: flex; justify-content: space-evenly">
+    <div
+      style="
+        width: fit-content;
+        padding: 20px;
+        border: 5px solid mediumaquamarine;
+        margin-bottom: auto;
+      "
+    >
+      <h4 style="text-decoration: underline">User List</h4>
+      <ul style="list-style-type: none">
+        @for (user of users; track user.id) {
+        <li>
+          {{ user.id }}:
+          <a
+            [routerLink]="[{ outlets: { userDetails: ['users', user.id, user.name] } }]"
+            style="text-decoration: none; color: black; font-weight: 700"
+            >{{ user.name }}</a
+          >
+          <!-- {{ user.id }}: <a routerLink="users/{{ user.id }}/{{ user.name }}" style="text-decoration: none; color: black; font-weight: 700;">{{ user.name }}</a> -->
+        </li>
+        }
+      </ul>
+    </div>
+    <div
+      style="
+        width: fit-content;
+        padding: 20px;
+        border: 5px solid rgb(187, 44, 87);
+        margin-bottom: auto;
+      "
+    >
+      <h2 style="text-decoration: underline">Passing Data from Parent to Child</h2>
+
+      <!-- Data from Parent to Child -->
+      <!-- 1 -->
+      <div style="margin: 10px 0px"> 
+        <!-- <app-datapassing userName="Ronak [with Static Text]"></app-datapassing> -->
+
+        <!-- @if( fullName.value!=null && fullName.value!=''){
+        <app-datapassing [userName]="fullName.value"></app-datapassing>
+        }
+
+        <select
+          #fullName
+          style="border: 1px solid black; font-weight: 900; padding: 4px 10px; border-radius: 7px"
+          (change)="updateFullName(fullName.value)"
         >
-        <!-- {{ user.id }}: <a routerLink="users/{{ user.id }}/{{ user.name }}" style="text-decoration: none; color: black; font-weight: 700;">{{ user.name }}</a> -->
-      </li>
+          <option value="">Select a User Name</option>
+          <option value="abc [with Dynamic Property Binding]">abc</option>
+          <option value="def [with Dynamic Property Binding]">def</option>
+          <option value="ghi [with Dynamic Property Binding]">ghi</option>
+          <option value="jkl [with Dynamic Property Binding]">jkl</option>
+        </select> -->
+      </div>
+
+      <!-- 2 -->
+      <!-- <div style="margin: 10px 0px">
+        @for(fruit of fruits; track fruit){ <app-datapassing [fruit]="fruit"></app-datapassing>}
+      </div> -->
+
+      <h2 style="text-decoration: underline">Passing Data from Child to Parent</h2>
+      <!-- 1 -->
+      <app-datapassing (getCities)="handleCity($event)"></app-datapassing>
+
+      @for (city of fetchedCities; track city) {
+      <h5>{{ city }}</h5>
       }
-    </ul>
+    </div>
   </div>
 </main>

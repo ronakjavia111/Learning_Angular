@@ -1,0 +1,26 @@
+<!-- Data from Parent to Child -->
+<!-- 1 -->
+<h5>{{ userName }}</h5>
+
+<!-- 2 -->
+<!-- <div style="margin: 10px">
+    <h5 style="background-color: brown; color: white; width: max-content">
+        {{ fruit }}
+    </h5>
+</div> -->
+
+<!-- Data from Child to Parent -->
+<button
+  class="btn btn-outline-success"
+  style="font-weight: 900; margin-bottom: 10px"
+  (click)="getCities.emit(cities)"
+>
+  Print Data
+</button>
+<!-- <button
+  class="btn btn-outline-success"
+  style="font-weight: 900; margin-bottom: 10px"
+  (click)="printData()"
+>
+  Print Data
+</button> -->

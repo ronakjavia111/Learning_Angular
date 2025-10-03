@@ -12,10 +12,11 @@ import {
 import { Routing } from './routing/routing';
 import { Lifecycle } from './lifecycle/lifecycle';
 import { RouterLink } from '@angular/router';
+import { Datapassing } from './datapassing/datapassing';
 
 @Component({
   selector: 'app-root',
-  imports: [Routing, Lifecycle, RouterLink],
+  imports: [Routing, Lifecycle, RouterLink, Datapassing],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -54,4 +55,23 @@ export class App {
       name: 'Ghi',
     },
   ];
+
+  // Passing Data from Parent to Child
+  // 1
+  fullName: string = 'Ronak';
+
+  updateFullName(val: string) {
+    this.fullName = val;
+  }
+
+  // 2
+  fruits = ['Mango', 'Apple', 'Grapes', 'Blueberry', 'Pomegranate'];
+
+  // Passing Data from Child to Parent
+  // 1
+  fetchedCities: string[] | undefined;
+
+  handleCity(cities: string[]) {
+    this.fetchedCities = cities;
+  }
 }

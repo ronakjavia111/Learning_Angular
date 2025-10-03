@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { routes } from '../app.routes';
 import { ActivatedRoute } from '@angular/router';
 
