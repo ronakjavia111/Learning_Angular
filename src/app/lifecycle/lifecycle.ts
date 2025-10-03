@@ -18,8 +18,8 @@ export class Lifecycle {
   }
 
   ngAfterViewInit() {
-    console.log('ngAfterViewInit - child view ready');
-    console.log('Paragraph text:', this.view.nativeElement.innerText);
+    // console.log('ngAfterViewInit - child view ready');
+    // console.log('Paragraph text:', this.view.nativeElement.innerText);
   }
 
   ngAfterContentChecked() {
@@ -27,7 +27,7 @@ export class Lifecycle {
   }
 
   ngAfterViewChecked() {
-    console.log('ngAfterViewChecked - child view checked');
+    // console.log('ngAfterViewChecked - child view checked');
   }
 
   // Called After ngOnChange on 1st call

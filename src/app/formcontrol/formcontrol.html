@@ -1,0 +1,252 @@
+<div
+  style="
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 5px solid rgb(255, 51, 78);
+    width: fit-content;
+  "
+>
+  <h2 style="text-decoration: underline">Form Control</h2>
+  <hr />
+
+  <section>
+    <h4 style="background-color: aqua; color: white; padding: 5px; width: fit-content">
+      Driven Form
+    </h4>
+    <input
+      type="text"
+      style="margin-right: 5px; padding-left: 5px"
+      placeholder="Enter your FirstName"
+      [formControl]="firstName"
+    />
+    <input
+      type="text"
+      style="margin: 0px 5px; padding-left: 5px"
+      placeholder="Enter your LastName"
+      [formControl]="lastName"
+    />
+    <input
+      type="text"
+      style="margin: 0px 5px; padding-left: 5px"
+      placeholder="Enter your Email"
+      [formControl]="email"
+    />
+    <button
+      (click)="getUserDetails()"
+      class="btn btn-outline-dark"
+      style="font-weight: 900; margin: 10px"
+    >
+      Get Details
+    </button>
+    <button
+      (click)="setUserDetails()"
+      class="btn btn-outline-warning"
+      style="font-weight: 900; margin: 10px"
+    >
+      Set Details
+    </button>
+  </section>
+
+  <hr />
+  <section style="margin: 10px 0px">
+    <h4 style="background-color: aqua; color: white; padding: 5px; width: fit-content">
+      Driven Form 2 [With Validation]
+    </h4>
+
+    <!-- With Form -->
+    <form
+      #userForm="ngForm"
+      (ngSubmit)="printUserDetails(userForm)"
+      style="display: flex; justify-content: space-between"
+    >
+      <!-- With Form Value
+      <form
+        #userForm="ngForm"
+        (ngSubmit)="printUserDetails(userForm.value)"
+        style="display: flex; justify-content: space-between"
+      > -->
+      <section style="display: grid; margin-bottom: auto">
+        <input
+          #name="ngModel"
+          required
+          type="text"
+          name="name"
+          placeholder="Enter your Name"
+          style="margin-right: 7px; padding-left: 5px"
+          ngModel
+        />
+        @if(name.touched && name.invalid){
+        <span style="margin-top: 5px; color: red; font-weight: 900">Name Field is Required.</span>
+        }
+      </section>
+      <section style="display: grid; margin-bottom: auto">
+        <input
+          #password="ngModel"
+          required
+          minlength="5"
+          type="password"
+          name="password"
+          placeholder="Enter your Password"
+          style="margin-right: 7px; padding-left: 5px"
+          ngModel
+        />
+        @if(password.touched && password.invalid){
+        <span style="margin-top: 5px; color: red; font-weight: 900"
+          >Password Field is Required.</span
+        >
+        }
+      </section>
+      <section style="display: grid; margin-bottom: auto">
+        <input
+          #range="ngModel"
+          required
+          type="range"
+          name="range"
+          style="margin-right: 7px; padding-left: 5px"
+          ngModel
+        />
+        @if(range.touched && range.invalid){
+        <span style="margin-top: 5px; color: red; font-weight: 900">Range Field is Required.</span>
+        }
+      </section>
+      <section style="display: grid; margin-bottom: auto">
+        <select
+          #gender="ngModel"
+          required
+          name="gender"
+          style="border: 1px solid black; border-radius: 7px; font-weight: 900; padding: 5px"
+          ngModel
+        >
+          <option value="">Select your Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        @if(gender.touched && gender.invalid){
+        <span style="margin-top: 5px; color: red; font-weight: 900">Gender Field is Required.</span>
+        }
+      </section>
+      <button
+        [disabled]="userForm.invalid"
+        class="btn btn-outline-info"
+        style="margin-left: 10px; font-weight: 900; margin-bottom: auto"
+      >
+        Print User Details
+      </button>
+    </form>
+
+    <div style="display: flex; justify-content: space-between; width: 65%; margin-top: 10px">
+      <!-- With Form -->
+      <h4>{{ userDetails?.value?.name }}</h4>
+      <h4>{{ userDetails?.value?.password }}</h4>
+      <h4>{{ userDetails?.value?.range }}</h4>
+      <h4>{{ userDetails?.value?.gender }}</h4>
+
+      <!-- With Form Value -->
+      <!-- <h4>{{ userDetails?.name }}</h4>
+      <h4>{{ userDetails?.password }}</h4>
+      <h4>{{ userDetails?.range }}</h4>
+      <h4>{{ userDetails?.gender }}</h4> -->
+    </div>
+  </section>
+  <hr />
+
+  <form [formGroup]="reactiveForm" (ngSubmit)="formSubmit()">
+    <h4 style="background-color: aqua; color: white; padding: 5px; width: fit-content">
+      Reactive Form
+    </h4>
+    <input
+      type="text"
+      style="margin-right: 5px; padding-left: 5px"
+      placeholder="Enter your FirstName"
+      formControlName="firstName"
+    />
+    <input
+      type="text"
+      style="margin: 0px 5px; padding-left: 5px"
+      placeholder="Enter your LastName"
+      formControlName="lastName"
+    />
+    <input
+      type="text"
+      style="margin: 0px 5px; padding-left: 5px"
+      placeholder="Enter your Email"
+      formControlName="email"
+    />
+    <button class="btn btn-outline-dark" style="font-weight: 900; margin: 10px">Get Details</button>
+    <button
+      (click)="setDetails()"
+      class="btn btn-outline-warning"
+      style="font-weight: 900; margin: 10px"
+    >
+      Set Details
+    </button>
+  </form>
+
+  <hr />
+
+  <form [formGroup]="reactiveFormWithValidator" (ngSubmit)="formSubmitWithValidator()">
+    <h4 style="background-color: aqua; color: white; padding: 5px; width: fit-content">
+      Reactive Form with Validators
+    </h4>
+    <main style="display: flex; justify-content: space-between">
+      <section style="display: grid; width: fit-content; margin-bottom: auto">
+        <input
+          type="text"
+          style="padding-left: 5px"
+          placeholder="Enter your Name"
+          formControlName="name"
+        />
+        <span style="color: red" *ngIf="getName?.touched && getName?.hasError('required')"
+          >This field is Required.</span
+        >
+      </section>
+      <section style="display: grid; width: fit-content; margin-bottom: auto">
+        <input
+          type="text"
+          style="padding-left: 5px"
+          placeholder="Enter your Age"
+          formControlName="age"
+        />
+        @if(getAge?.touched){ @if(getAge?.hasError('required')){
+        <span style="color: red">This field is Required.</span>
+        } @else if(getAge?.invalid){
+        <span style="color: red">Invalid Age.</span>
+        }}
+      </section>
+      <section style="display: grid; width: fit-content; margin-bottom: auto">
+        <input
+          type="text"
+          style="padding-left: 5px"
+          placeholder="Enter your Email"
+          formControlName="email"
+        />
+        @if(getEmail?.touched){ @if (getEmail?.hasError('required')){
+        <span style="color: red">This field is Required.</span>
+        } @else if(getEmail?.invalid){
+        <span style="color: red">Invalid Email.</span>
+        }}
+      </section>
+      <section>
+        <button
+          type="button"
+          (click)="clearFormWithValidator()"
+          class="btn btn-outline-secondary"
+          style="width: fit-content; font-weight: 900; margin-left: auto"
+        >
+          Clear Details
+        </button>
+      </section>
+      <section>
+        <button
+          type="button"
+          (click)="formSubmitWithValidator()"
+          class="btn btn-outline-warning"
+          style="width: fit-content; font-weight: 900; margin-left: auto"
+        >
+          Get Details
+        </button>
+      </section>
+    </main>
+  </form>
+</div>

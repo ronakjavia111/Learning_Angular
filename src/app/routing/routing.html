@@ -10,7 +10,6 @@
   <h2 style="text-decoration: underline">Routing</h2>
   <nav class="nav">
     <a
-      href="/"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
       class="nav-link btn btn-primary"
@@ -18,7 +17,6 @@
       >Home</a
     >
     <a
-      href="todolist"
       [routerLink]="['/todolist', { name: 'RJ' }]"
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
@@ -28,7 +26,6 @@
       >TodoList</a
     >
     <a
-      href="others"
       class="nav-link btn btn-primary"
       routerLink="/others"
       routerLinkActive="active"
@@ -38,7 +35,6 @@
       >Others</a
     >
     <a
-      href="signals"
       class="nav-link btn btn-primary"
       routerLink="/signals"
       routerLinkActive="active"
@@ -46,6 +42,15 @@
       style="margin-left: 5px"
       routerLink="signals"
       >Signal and its Types</a
+    >
+    <a
+      class="nav-link btn btn-primary"
+      routerLink="/formcontrol"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      style="margin-left: 5px"
+      routerLink="formcontrol"
+      >Form Control</a
     >
   </nav>
 
