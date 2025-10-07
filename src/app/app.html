@@ -13,47 +13,47 @@
   </app-lifecycle>
   }
 
-  <div style="display: flex; justify-content: space-evenly">
-    <div
-      style="
-        width: fit-content;
-        padding: 20px;
-        border: 5px solid mediumaquamarine;
-        margin-bottom: auto;
-      "
-    >
-      <h4 style="text-decoration: underline">User List</h4>
-      <ul style="list-style-type: none">
-        @for (user of users; track user.id) {
-        <li>
-          {{ user.id }}:
-          <a
-            [routerLink]="[{ outlets: { userDetails: ['users', user.id, user.name] } }]"
-            style="text-decoration: none; color: black; font-weight: 700"
-            >{{ user.name }}</a
-          >
-          <!-- {{ user.id }}: <a routerLink="users/{{ user.id }}/{{ user.name }}" style="text-decoration: none; color: black; font-weight: 700;">{{ user.name }}</a> -->
-        </li>
-        }
-      </ul>
-    </div>
-    <div
-      style="
-        width: fit-content;
-        padding: 20px;
-        border: 5px solid rgb(187, 44, 87);
-        margin-bottom: auto;
-      "
-    >
-      <h2 style="text-decoration: underline">Passing Data from Parent to Child</h2>
+  <main style="border: 5px solid black; padding: 20px">
+    <div style="display: flex; justify-content: space-evenly">
+      <div
+        style="
+          width: fit-content;
+          padding: 20px;
+          border: 5px solid mediumaquamarine;
+          margin-bottom: auto;
+        "
+      >
+        <h4 style="text-decoration: underline">User List</h4>
+        <ul style="list-style-type: none">
+          @for (user of users; track user.id) {
+          <li>
+            {{ user.id }}:
+            <a
+              [routerLink]="[{ outlets: { userDetails: ['users', user.id, user.name] } }]"
+              style="text-decoration: none; color: black; font-weight: 700"
+              >{{ user.name }}</a
+            >
+            <!-- {{ user.id }}: <a routerLink="users/{{ user.id }}/{{ user.name }}" style="text-decoration: none; color: black; font-weight: 700;">{{ user.name }}</a> -->
+          </li>
+          }
+        </ul>
+      </div>
+      <div
+        style="
+          width: fit-content;
+          padding: 20px;
+          border: 5px solid rgb(187, 44, 87);
+          margin-bottom: auto;
+        "
+      >
+        <h2 style="text-decoration: underline">Passing Data from Parent to Child</h2>
 
-      <!-- Data from Parent to Child -->
-      <!-- 1 -->
-      <div style="margin: 10px 0px"> 
-        <!-- <app-datapassing userName="Ronak [with Static Text]"></app-datapassing> -->
+        <!-- 1 -->
+        <!-- <div style="margin: 10px 0px">
+        <app-datapassing userName="Ronak [with Static Text]"></app-datapassing>
 
-        <!-- @if( fullName.value!=null && fullName.value!=''){
-        <app-datapassing [userName]="fullName.value"></app-datapassing>
+        @if( fullName.value!=null && fullName.value!=''){
+         <app-datapassing [userName]="fullName.value"></app-datapassing>
         }
 
         <select
@@ -66,21 +66,151 @@
           <option value="def [with Dynamic Property Binding]">def</option>
           <option value="ghi [with Dynamic Property Binding]">ghi</option>
           <option value="jkl [with Dynamic Property Binding]">jkl</option>
-        </select> -->
-      </div>
-
-      <!-- 2 -->
-      <!-- <div style="margin: 10px 0px">
-        @for(fruit of fruits; track fruit){ <app-datapassing [fruit]="fruit"></app-datapassing>}
+        </select>
       </div> -->
 
-      <h2 style="text-decoration: underline">Passing Data from Child to Parent</h2>
-      <!-- 1 -->
-      <app-datapassing (getCities)="handleCity($event)"></app-datapassing>
+        <!-- 2 -->
+        <!-- <div style="margin: 10px 0px">
+        @for(fruit of fruits; track fruit){ <app-datapassing [fruit]="fruit"></app-datapassing>}
+      </div> -->
+      </div>
+      <div
+        style="
+          width: fit-content;
+          padding: 20px;
+          border: 5px solid rgb(187, 44, 87);
+          margin-bottom: auto;
+        "
+      >
+        <h2 style="text-decoration: underline">Passing Data from Child to Parent</h2>
+        <!-- 1 -->
+        <app-datapassing (getCities)="handleCity($event)"></app-datapassing>
 
-      @for (city of fetchedCities; track city) {
-      <h5>{{ city }}</h5>
-      }
+        @for (city of fetchedCities; track city) {
+        <h5>{{ city }}</h5>
+        }
+        <hr />
+
+        <!-- 2 -->
+        <!-- <button (click)="loadData()"
+          class="btn btn-outline-info"
+          style="font-weight: 900; margin-bottom: 20px"
+          >
+          Print Mobile Data
+        </button> -->
+      </div>
     </div>
-  </div>
+    <div style="display: flex; justify-content: space-evenly; margin-top: 20px">
+      <div
+        style="
+          width: fit-content;
+          padding: 20px;
+          border: 5px solid rgb(187, 44, 87);
+          margin-bottom: auto;
+        "
+      >
+        <h2 style="text-decoration: underline; margin-bottom: 30px">Services</h2>
+
+        <div style="display: flex">
+          <div style="margin-right: 20px">
+            <h3 style="text-decoration: underline">Product Data</h3>
+
+            @for (item of productData; track item.id) {
+            <h4>{{ item.id }}: {{ item.name }}-{{ item.category }}-{{ item.price }}</h4>
+            }
+          </div>
+          <div>
+            <h3 style="text-decoration: underline; text-align: center">API Data</h3>
+
+            <form #userForm="ngForm" (ngSubmit)="addProduct(userForm)" style="margin-bottom: 10px">
+              <input
+                type="text"
+                style="
+                  margin-right: 10px;
+                  border-radius: 5px;
+                  border: 2px solid black;
+                  padding-left: 7px;
+                "
+                placeholder="Enter your ID"
+                name="id"
+                [ngModel]="selectedProduct?.id"
+              />
+              <input
+                type="text"
+                style="
+                  margin-right: 10px;
+                  border-radius: 5px;
+                  border: 2px solid black;
+                  padding-left: 7px;
+                "
+                placeholder="Enter your Title"
+                name="title"
+                [ngModel]="selectedProduct?.title"
+              />
+              <input
+                type="text"
+                style="
+                  margin-right: 10px;
+                  border-radius: 5px;
+                  border: 2px solid black;
+                  padding-left: 7px;
+                "
+                placeholder="Enter your Views"
+                name="views"
+                [ngModel]="selectedProduct?.views"
+              />
+
+              @if(!selectedProduct){
+              <button class="btn btn-outline-primary" style="border: 2px solid #0066ff">
+                Add User
+              </button>
+              } @else{
+              <button
+                type="button"
+                (click)="updateProductDetails(userForm)"
+                class="btn btn-outline-primary"
+                style="border: 2px solid #0066ff"
+              >
+                Update User
+              </button>
+              }
+            </form>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+                border: 1px solid black;
+              "
+            >
+              @for(item of productAPIData; track item.title){
+              <ul>
+                <li><b>Id:</b> {{ item.id }}</li>
+                <li><b>Title:</b> {{ item.title }}</li>
+                <li><b>Views:</b> {{ item.views }}</li>
+                <span>
+                  <button
+                    class="btn btn-outline-info"
+                    style="margin-right: 10px; font-weight: 900"
+                    (click)="updateProduct(item.id, userForm)"
+                  >
+                    Update
+                  </button>
+                  <button
+                    class="btn btn-outline-danger"
+                    style="margin-right: 10px; font-weight: 900"
+                    (click)="deleteProduct(item.id)"
+                  >
+                    Delete
+                  </button>
+                </span>
+              </ul>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </main>

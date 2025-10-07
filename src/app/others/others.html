@@ -1,4 +1,4 @@
-<main style="display: flex; justify-content: space-between; align-items: flex-start">
+<section style="display: flex; justify-content: space-evenly; align-items: flex-start">
   <div style="border: 5px solid gray; padding: 20px; width: max-content; margin: 10px 0px">
     <h2 style="text-decoration: underline">Event Handling</h2>
 
@@ -62,38 +62,45 @@
 
     <span *ngFor="let user of users" style="margin-right: 5px">{{ user }}</span>
 
-    <div style="margin: 20px; border: 5px solid gold; width: fit-content; padding: 10px">
-      <button (click)="changeUser('Abc')">Abc</button>
-      <button (click)="changeUser('Def')">Def</button>
-      <button (click)="changeUser('Ghi')">Ghi</button>
+    <div style="display: flex">
+      <div style="margin: 20px; border: 5px solid gold; width: fit-content; padding: 10px">
+        <button class="btn btn-secondary" style="margin-right: 5px" (click)="changeUser('Abc')">
+          Abc
+        </button>
+        <button class="btn btn-secondary" style="margin-right: 5px" (click)="changeUser('Def')">
+          Def
+        </button>
+        <button class="btn btn-secondary" (click)="changeUser('Ghi')">Ghi</button>
 
-      <div [ngSwitch]="user">
-        <h3 *ngSwitchCase="'Abc'">User: Abc</h3>
-        <h3 *ngSwitchCase="'Def'">User: Def</h3>
-        <h3 *ngSwitchCase="'Ghi'">User: Ghi</h3>
+        <div [ngSwitch]="user">
+          <h3 *ngSwitchCase="'Abc'">User: Abc</h3>
+          <h3 *ngSwitchCase="'Def'">User: Def</h3>
+          <h3 *ngSwitchCase="'Ghi'">User: Ghi</h3>
+        </div>
       </div>
-    </div>
 
-    <div style="margin: 20px; border: 5px solid sienna; width: fit-content; padding: 10px">
-      <label for="cars">Choose a car:</label>
+      <div style="margin: 20px; border: 5px solid sienna; width: fit-content; padding: 10px">
+        <label for="cars">Choose a car:</label>
 
-      <select name="cars" [(ngModel)]="car">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
+        <select name="cars" [(ngModel)]="car">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
 
-      <div [ngSwitch]="car">
-        <h3 *ngSwitchCase="'volvo'">Volvo</h3>
-        <h3 *ngSwitchCase="'saab'">Saab</h3>
-        <h3 *ngSwitchCase="'mercedes'">Mercedes</h3>
-        <h3 *ngSwitchCase="'audi'">Audi</h3>
-        <h3 *ngSwitchDefault>No Car Selected</h3>
+        <div [ngSwitch]="car">
+          <h3 *ngSwitchCase="'volvo'">Volvo</h3>
+          <h3 *ngSwitchCase="'saab'">Saab</h3>
+          <h3 *ngSwitchCase="'mercedes'">Mercedes</h3>
+          <h3 *ngSwitchCase="'audi'">Audi</h3>
+          <h3 *ngSwitchDefault>No Car Selected</h3>
+        </div>
       </div>
     </div>
   </div>
-
+</section>
+<section style="display: flex; justify-content: space-evenly; align-items: flex-start">
   <div
     style="
       margin-top: 15px;
@@ -118,4 +125,52 @@
       </button>
     </div>
   </div>
-</main>
+
+  <div
+    style="
+      margin-top: 15px;
+      margin-bottom: 15px;
+      padding: 15px;
+      border: 5px solid teal;
+      width: fit-content;
+    "
+  >
+    <h2 style="text-decoration: underline">Custom Pipes</h2>
+
+    <main style="display: flex">
+      <section style="border: 5px solid indianred; padding: 0px 15px">
+        <div style="font-weight: 700; margin-top: 15px">
+          <h5 style="color: blue">Pipes of Different Case</h5>
+          <span>{{ City | lowercase }}, </span>
+          <span>{{ State | uppercase }} - </span>
+          <span>{{ Country | titlecase }}</span>
+        </div>
+        <div style="font-weight: 700; margin-top: 15px">
+          <h5 style="color: blue">Pipes of Different Date</h5>
+          <h6>{{ Date }}</h6>
+          <h6>{{ Date | date }}</h6>
+          <h6>{{ Date | date : 'fullDate' | uppercase }}</h6>
+          <h6>{{ Date | date : 'hh:mm' }}</h6>
+        </div>
+      </section>
+      <section style="border: 5px solid indianred; margin: 0px auto auto 20px; padding: 0px 15px">
+        <div style="font-weight: 700; margin-top: 15px">
+          <h5 style="color: blue">Pipes of Different Currency</h5>
+          <h6>{{ Currency | currency }}</h6>
+          <h6>{{ Currency | currency : 'INR' }}</h6>
+        </div>
+        <div style="font-weight: 700; margin-top: 15px">
+          <h5 style="color: blue">Pipes: Currency Convertor</h5>
+          <h6>Default Currency: {{ Currency | currency }}</h6>
+          <h6>
+            Dollar[88.78] to Rupees: {{ Currency | currencyConvertor : 88.78 | currency : 'INR' }}
+          </h6>
+          <h6>
+            Euro[104.25] to Rupees: {{ Currency | currencyConvertor : 104.25 | currency : 'INR' }}
+          </h6>
+          <h6>Pound[] to Rupees: {{ Currency | currencyConvertor | currency : 'INR' }}</h6>
+        </div>
+      </section>
+    </main>
+  </div>
+</section>

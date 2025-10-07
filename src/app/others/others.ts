@@ -1,10 +1,18 @@
-import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
+import {
+  CommonModule,
+  NgFor,
+  NgIf,
+  NgSwitch,
+  NgSwitchCase,
+  NgSwitchDefault,
+} from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CurrencyConvertorPipe } from '../pipes/currency-convertor-pipe';
 
 @Component({
   selector: 'app-others',
-  imports: [NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, FormsModule],
+  imports: [NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, FormsModule, CommonModule, CurrencyConvertorPipe],
   templateUrl: './others.html',
   styleUrl: './others.css',
 })
@@ -62,4 +70,11 @@ export class Others {
   setUserName(val: string) {
     this.userName = val;
   }
+
+  // Custom Pipes
+  Country: string = 'India';
+  State: string = 'Gujarat';
+  City: string = 'Ahmedabad';
+  Date: Date = new Date();
+  Currency: number = 100;
 }

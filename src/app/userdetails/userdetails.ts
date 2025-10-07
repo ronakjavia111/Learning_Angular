@@ -18,7 +18,7 @@ export class Userdetails {
     this.route.params.subscribe((param) => {
       this.name = param['name'];
       this.id = param['id'];
-      console.log(param);
+      // console.log(param);
     });
   }
 }

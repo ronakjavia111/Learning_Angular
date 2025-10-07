@@ -15,7 +15,7 @@ export class Datapassing {
   @Output() getCities = new EventEmitter();
   @Output() cities = ['Rajkot', 'Ahmedabad', 'Mumbai', 'Jaipur'];
 
-  printData(){
-    return this.getCities.emit(this.cities);
-  }
+  // printData(){
+  //   return this.getCities.emit(this.cities);
+  // }
 }
