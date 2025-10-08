@@ -69,7 +69,7 @@ export class Signals {
 
   constructor() {
     effect(() => {
-      console.log(this.userName);
+      console.log(this.userName());
 
       if (this.count() == 2) {
         this.displayHeader = true;

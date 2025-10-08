@@ -12,7 +12,16 @@ import { CurrencyConvertorPipe } from '../pipes/currency-convertor-pipe';
 
 @Component({
   selector: 'app-others',
-  imports: [NgIf, NgFor, NgSwitch, NgSwitchCase, NgSwitchDefault, FormsModule, CommonModule, CurrencyConvertorPipe],
+  imports: [
+    NgIf,
+    NgFor,
+    NgSwitch,
+    NgSwitchCase,
+    NgSwitchDefault,
+    FormsModule,
+    CommonModule,
+    CurrencyConvertorPipe,
+  ],
   templateUrl: './others.html',
   styleUrl: './others.css',
 })
@@ -77,4 +86,9 @@ export class Others {
   City: string = 'Ahmedabad';
   Date: Date = new Date();
   Currency: number = 100;
+
+  // Angular 20
+  carDetails: object = {
+    name: 'Car Name',
+  };
 }
